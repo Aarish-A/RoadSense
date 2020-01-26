@@ -1,0 +1,19 @@
+.App {
+  text-align: center;
+}
+
+.accident-map{
+  position: relative;
+  height: 700px;
+  width: 1530px;
+}
+
+.information{
+  font-size: 20px;
+  width: 1530px;
+  padding-top: 15px;
+}
+
+.accident-icon{
+  border-radius: 50%;
+}
