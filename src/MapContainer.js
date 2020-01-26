@@ -21,7 +21,7 @@ export class MapContainer extends React.Component {
         };
     }
 
-    displayMarkers = (props) => {
+    displayAccidents = (props) => {
         return this.props.accidentList.map((accidents, index) => {
             const onMarkerClick = (evt) => {
                 console.log(1);
@@ -29,19 +29,19 @@ export class MapContainer extends React.Component {
 
             return (
                 <Marker
-                    key={index}
+                    key={'accidents-' + index}
                     id={index}
                     position={{ lat: accidents.lat, lng: accidents.lng }}
                     description={accidents.name}
                     onClick={onMarkerClick}
-                    icon={{ url: 'https://i.imgur.com/bpAojnM.png', scaledSize: new this.props.google.maps.Size(60, 60) }}
+                    icon={{ class: "accident-icon", url: 'https://i.imgur.com/bpAojnM.png', scaledSize: new this.props.google.maps.Size(60, 60) }}
                 />
             );
         })
     }
 
     render() {
-        const { editing, accidentList } = this.props;
+        const { editing, accidentList, peopleList } = this.props;
         return (
             <Map
                 onClick={this.onMapClicked}
@@ -52,7 +52,7 @@ export class MapContainer extends React.Component {
                 }}
                 google={this.props.google}
             >
-                {this.displayMarkers()}
+                {this.displayAccidents()}
             </Map>
         );
     }
