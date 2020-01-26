@@ -24,11 +24,17 @@ export class MapContainer extends React.Component {
     displayAccidents = (props) => {
         return this.props.accidentList.map((accidents, index) => {
             const onMarkerClick = (evt) => {
-                console.log(1);
+                let something = "Oops - we will correct it for next time.";
+                document.getElementById("title").innerHTML = "Accident at " + evt.loc
+                document.getElementById("exact-location").innerHTML = "(" + evt.position.lat + ", " + evt.position.lng + ")"
+                document.getElementById("time").innerHTML = Math.round((Date.now() - evt.ts * 1000) / 1000) + " seconds since accident"
+                //   document.getElementById("actOccur").innerHTML = "<center><a href='#'>This did not occur</a></center>"
             };
 
             return (
                 <Marker
+                    ts={accidents.timestamp}
+                    loc={accidents.location}
                     key={'accidents-' + index}
                     id={index}
                     position={{ lat: accidents.lat, lng: accidents.lng }}
