@@ -1,7 +1,5 @@
-from templates import app, api, socketio
+from templates import app, api
 from flask import request, Response, render_template
-from flask_socketio import emit
-from predict import predict_sound
 
 @app.route('/', methods=['GET'])
 def home():
@@ -13,8 +11,3 @@ def add_crash():
         return Response('failed', 'content_type must be application/json', 401)
     data = request.get_json()
     return api.add_crash(data['crash'])
-
-@socketio.on('predict')
-def handle_prediction(audio):
-    print('Attemping to predict sound...')
-    emit(predict_sound(audio))
