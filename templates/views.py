@@ -1,9 +1,9 @@
 from templates import app, api
-from flask import request, Response
+from flask import request, Response, render_template
 
 @app.route('/', methods=['GET'])
 def home():
-    return 'yes'
+    return render_template('index.html')
 
 @app.route('/api/crash_history', methods=['POST'])
 def add_crash():

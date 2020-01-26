@@ -1,0 +1,9 @@
+.App {
+  text-align: center;
+}
+
+.accident-map{
+  position: relative;
+  margin: 5px 5px 5px 5px;
+  height: 300px;
+}
