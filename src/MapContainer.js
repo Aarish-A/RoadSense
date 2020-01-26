@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import { GOOGLE_MAPS_API_KEY } from './variables.js';
+
 export class MapContainer extends React.Component {
     constructor(props) {
         super(props);
@@ -19,49 +20,39 @@ export class MapContainer extends React.Component {
             ],
         };
     }
-    // display all map markers, and provide a link to the marker's individual page
-    displayMarkers = () => {
+
+    displayMarkers = (props) => {
         return this.props.accidentList.map((accidents, index) => {
+            const onMarkerClick = (evt) => {
+                console.log(1);
+            };
+
             return (
                 <Marker
                     key={index}
                     id={index}
-                    position={{ lat: accidents.lat, lng: accidents.long }}
+                    position={{ lat: accidents.lat, lng: accidents.lng }}
                     description={accidents.name}
-                    onClick={this.onMarkerClick}
+                    onClick={onMarkerClick}
+                    icon={{ url: 'https://i.imgur.com/bpAojnM.png', scaledSize: new this.props.google.maps.Size(60, 60) }}
                 />
             );
         })
     }
 
-    // displayGunshots = () => {
-    //     return this.props.gunshotList.map((gunshots, index) => {
-    //         return (
-    //             <Marker
-    //                 key={index}
-    //                 id={index}
-    //                 position={{ lat: gunshots.lat, lng: gunshots.long }}
-    //                 description={gunshots.name}
-    //                 onClick={this.onMarkerClick}
-    //             />
-    //         );
-    //     })
-    // }
-
     render() {
-        const { editing, accidentList } = this.props; // props received from parents (app.js); put "gunshotList" within {}
+        const { editing, accidentList } = this.props;
         return (
             <Map
                 onClick={this.onMapClicked}
                 zoom={14}
-                initialCenter={{ 
-                    lat: accidentList[0].lat, 
-                    lng: accidentList[0].lng 
+                initialCenter={{
+                    lat: accidentList[0].lat,
+                    lng: accidentList[0].lng
                 }}
                 google={this.props.google}
-            >          
+            >
                 {this.displayMarkers()}
-                {/* this.displayAccidentMarkers */}
             </Map>
         );
     }
