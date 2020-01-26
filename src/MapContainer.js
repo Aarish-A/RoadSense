@@ -53,9 +53,13 @@ export class MapContainer extends React.Component {
         return (
             <Map
                 onClick={this.onMapClicked}
-                zoom={8}
-                initialCenter={{ lat: accidentList[0].lat, lng: accidentList[0].long }}
-            >          google={this.props.google}
+                zoom={14}
+                initialCenter={{ 
+                    lat: accidentList[0].lat, 
+                    lng: accidentList[0].lng 
+                }}
+                google={this.props.google}
+            >          
                 {this.displayMarkers()}
                 {/* this.displayAccidentMarkers */}
             </Map>
@@ -63,5 +67,5 @@ export class MapContainer extends React.Component {
     }
 }
 export default GoogleApiWrapper({
-    apiKey: GOOGLE_MAPS_API_KEY
+    apiKey: 'AIzaSyDUx9sscMv5qGQCY4XGgGLqAlTld4qXElY'
 })(MapContainer);
