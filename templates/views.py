@@ -17,4 +17,4 @@ def add_crash():
 @socketio.on('predict')
 def handle_prediction(audio):
     print('Attemping to predict sound...')
-    emit('prediction', predict_sound(audio))
+    emit(predict_sound(audio))
