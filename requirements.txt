@@ -63,7 +63,7 @@ pylint==2.4.4
 pyparsing==2.4.6
 pyserial==3.4
 python-dateutil==2.8.1
-python-jwt==3.2.5
+python-jwt==3.3.4
 pytz==2019.3
 pyzmq==17.1.2
 raven==6.10.0
